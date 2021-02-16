@@ -56,7 +56,7 @@ module.exports = {
         
         let xd_xd =  moment(usuario.user.createdAt).fromNow()
         let xd_xd_Xd = moment(usuario.joinedAt).fromNow()
-        const connectedIn = usuario.user.presence.clientStatus && usuario.user.presence.status != 'offline' ? Object.keys(usuario.user.presence.clientStatus).join(" **`|`** ").replace(/web/, "🌐 Navegador" ).replace(/mobile/, "📱 Movil").replace( /desktop/, "🖥️ Pc") : '<:not:786381128260911155> Desconectado'
+        const connectedIn = usuario.user.presence.clientStatus && usuario.user.presence.status != 'offline' ? Object.keys(usuario.user.presence.clientStatus).join(" **`|`** ").replace(/web/, "🌐" ).replace(/mobile/, "📱").replace( /desktop/, "🖥️") : '<:not:786381128260911155> Desconectado'
         let nitro;
         const a = usuario.user
         const aa = a.displayAvatarURL({ dynamic: true })
