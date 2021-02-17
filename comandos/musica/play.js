@@ -12,18 +12,18 @@ module.exports = {
          const canalDeVoz = message.member.voice.channel;
          let busquedaCancion = args.join(' ')
 
-         if (!canalDeVoz) return message.channel.send('Necesitas unirte a un canal de voz para reproducir música');
+         if (!canalDeVoz) return message.channel.send('<:not:786381128260911155> | Necesitas unirte a un canal de voz para reproducir música');
 
          const permisosBot = canalDeVoz.permissionsFor(bot.user);
 
          if (!permisosBot.has('CONNECT') || !permisosBot.has('SPEAK')) {
-            return message.channel.send('No tengo los suficientes permisos');
+            return message.channel.send('<:not:786381128260911155> | No tengo los suficientes permisos');
           }
 
         
 
         if(!busquedaCancion) {
-            return message.channel.send('Debes ingresar un link de youtube o el nombre de la musica a reproducir')
+            return message.channel.send('<:not:786381128260911155> | Debes ingresar un link de youtube o el nombre de la musica a reproducir')
         }
   
           var opts = {

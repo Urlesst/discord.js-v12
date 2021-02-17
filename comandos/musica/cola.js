@@ -20,7 +20,7 @@ module.exports = {
         let cantidadCanciones = `\n📒 __Lista ${bot.cola.songs.length}/15 canciones__`
         let embedDeInfoCola = new bot.discord.MessageEmbed()
         .setAuthor(message.guild.name, message.guild.iconURL({dynamic: true}))
-        .addField(`__Lista de canciones de ${message.guild.name}__`, `${nombre}` + '\n' + '**__Demas canciones__**' + '\n' + `${lista}` + '\n' + `${cantidadCanciones}\n`)
+        .addField(`__Lista de canciones de ${message.guild.name}__`, `> ${nombre}` + '\n' + '**__Demas canciones__**' + '\n' + `> ${lista}` + '\n' + `> ${cantidadCanciones}\n`)
         .setTimestamp()
         .setFooter('music')
         .setColor(message.member.displayHexColor)

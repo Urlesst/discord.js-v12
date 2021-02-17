@@ -1,4 +1,7 @@
+const cooldown = new Set()
+
 const GuildModel = require("../database/models/prefix_db.js");
+
 var message = async function (bot, message) {
    
     const { MessageEmbed } = require("discord.js")
@@ -71,7 +74,7 @@ var message = async function (bot, message) {
 
    bot.prefix = modelo ? modelo.prefix : "p?";
 
-	if (!message.content.startsWith(bot.prefix) || message.author.bot) return;
+	if (!message.content.toLowerCase().startsWith(bot.prefix) || message.author.bot) return;
 
     function humanize(user_afk) { 
         let humanizeDuration = require('humanize-duration'); 
@@ -93,9 +96,29 @@ return message.author.send(`<:not:786381128260911155> vaya, \`estas en la lista 
 	const args = message.content.slice(bot.prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
 
+    
     let cmd = bot.comandos.get(command)  || bot.comandos.find(c => c.alias && c.alias.includes(command))
-    if(cmd) {
-        return cmd.run(bot, message, args)
+    if(!cmd) return;
+    var id = message.author.id + cmd.name + cmd.alias.join('');
+    const tiempo = cmd.cooldown;
+    if(cooldown.has(id)) return message.channel.send(`${message.author} <:not:786381128260911155> | No seas tan rapido, espera \`${tiempo}\` segundos para volver a usar el comando`)
+    cooldown.add(id)
+    if(cmd){
+ setTimeout(() => {
+         cooldown.delete(id)
+        }, tiempo + '000')
+if(cmd.permissions){
+            const authorPerms = message.channel.permissionsFor(message.author);
+                 if (!authorPerms || !authorPerms.has(cmd.permissions)) {
+                 let embedNoPermisos = new bot.discord.MessageEmbed()
+     .setDescription(`<:not:786381128260911155> | No tienes los suficientes permisos\n__Permiso requerido:__ \`${cmd.permissions}\``)
+     .setTimestamp()
+     .setFooter(message.author.tag, message.author.displayAvatarURL({dynamic: true}))
+     .setColor('RANDOM')
+         return message.channel.send(embedNoPermisos)
+        }
+        }
+    cmd.run(bot, message, args)
     }
 
 }
