@@ -4,7 +4,7 @@ const GuildModel = require("../database/models/prefix_db.js");
 
 var message = async function (bot, message) {
   // AKK
-  
+
   let guild_config = await bot.db.findOne({ guild: message.guild.id }), 
   users_afk = guild_config ? guild_config.users_afk : [] 
 
@@ -126,6 +126,9 @@ return message.author.send(`<:not:786381128260911155> vaya, \`estas en la lista 
         }
     
         bot.mensajeAdvertencia = new bot.discord.MessageEmbed().setColor(objecto.color).setFooter(objecto.autorTag, objecto.autorAvatar).setTimestamp()
+// EMBED-EXITO 
+
+bot.mensajeExito = new bot.discord.MessageEmbed().setColor(objecto.color).setTimestamp().setAuthor(objecto.autorTag, objecto.autorAvatar)
 
 //EMBED-PERMISOS
 
@@ -133,7 +136,7 @@ return message.author.send(`<:not:786381128260911155> vaya, \`estas en la lista 
             const authorPerms = message.channel.permissionsFor(message.author);
                  if (!authorPerms || !authorPerms.has(cmd.permissions)) {
                  let embedNoPermisos = new bot.discord.MessageEmbed()
-     .setDescription(`<:not:786381128260911155> • No tienes los suficientes permisos\n__Permiso requerido:__ \`${cmd.permissions}\``)
+     .setDescription(`<:not:786381128260911155> • No tienes los suficientes permisos.\n__Permiso requerido:__ \`${cmd.permissions}\``)
      .setTimestamp()
      .setFooter(message.author.tag, message.author.displayAvatarURL({dynamic: true}))
      .setColor('RANDOM')
