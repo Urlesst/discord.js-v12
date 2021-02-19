@@ -1,6 +1,7 @@
 module.exports = {
     name: 'ping',
     alias: ['pong'],
+    cooldown: 4,
     usage: '',
     description: 'Latencia de mensajes y con la API de discord.',
     async run(bot, message, args) {
@@ -8,7 +9,7 @@ module.exports = {
         message.react("786381086002380811");
       let ping = Math.floor(bot.ws.ping);
   embed = new bot.discord.MessageEmbed()
-  .setDescription('<a:xD:786388320094781470> | Obteniendo ping...')
+  .setDescription('<a:xD:786388320094781470> Obteniendo ping...')
   .setTimestamp()
   .setColor('RANDOM')
       message.channel.send(embed).then(async m => {

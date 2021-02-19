@@ -12,16 +12,16 @@ module.exports = {
       if(!usuariosPermitidosAusarElReload.includes(message.author.id)) return;
       const command = bot.comandos.get(nombreComando) || bot.comandos.find(cmd => cmd.alias && cmd.alias.includes(nombreComando));
        if(!nombreCarpeta){
-      return message.channel.send('<:not:786381128260911155> | Ingresa la categoria del comando')
+      return message.channel.send('<:not:786381128260911155> Ingresa la categoria del comando')
       }
 
       if(!nombreComando){
-        return message.channel.send('<:not:786381128260911155> | Ingresa el comando a recargar')
+        return message.channel.send('<:not:786381128260911155> Ingresa el comando a recargar')
         }
      
 
      if(!command){
-        return message.channel.send('<:not:786381128260911155> | No se encontro el comando')  
+        return message.channel.send('<:not:786381128260911155> No se encontro el comando')  
      }  
      try {
     
@@ -31,7 +31,7 @@ module.exports = {
         bot.comandos.set(newCommand.name, newCommand);
     } catch (error) {
         console.error(error);
-        return message.channel.send(`<:not:786381128260911155> | Hubo un error al recargar \`${command.name}\`\n\`${error.message}\``);
+        return message.channel.send(`<:not:786381128260911155> Hubo un error al recargar \`${command.name}\`\n\`${error.message}\``);
     }
     message.channel.send(`El comando \`${command.name}\` ha sido recargado exitosamente`);
     }

@@ -20,6 +20,26 @@ bot.discord = Discord;
 bot.mapcola = new Map()
 bot.comandos = new Discord.Collection();
 
+const { GiveawaysManager } = require('discord-giveaways');
+bot.giveawaysManager = new GiveawaysManager(bot, {
+    storage: "./giveaways.json",
+    updateCountdownEvery: 50000,
+    default: {
+        botsCanWin: false,
+        embedColor: "RANDOM",
+        reaction: "🎉"
+    }
+});
+
+
+bot.giveawaysManager.on("giveawayReactionAdded", (giveaway, member, reaction) => {
+    console.log(`${member.user.tag} entro #${giveaway.messageID} (${reaction.emoji.name})`);
+});
+
+bot.giveawaysManager.on("giveawayReactionRemoved", (giveaway, member, reaction) => {
+    console.log(`${member.user.tag} quito la raccion #${giveaway.messageID} (${reaction.emoji.name})`);
+});
+
 comandos.command(bot)
 
 bot.on('ready', () => {

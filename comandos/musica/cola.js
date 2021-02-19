@@ -5,7 +5,8 @@ module.exports = {
     description: 'Muestra la cola de reproduccion actual del servidor.',
     async run(bot, message, args) {
         if(!bot.cola) {
-            return message.channel.send('No hay cola de musica en este servidor');
+            bot.mensajeAdvertencia.setDescription('<:not:786381128260911155> •  No hay cola de musica en este servidor');
+           return message.channel.send(bot.mensajeAdvertencia)
         }
         let i = 1
 

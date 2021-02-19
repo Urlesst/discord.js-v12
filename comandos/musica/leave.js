@@ -6,10 +6,12 @@ module.exports = {
     async run(bot, message, args) {
         const canalDeVoz = await message.member.voice.channel; 
         if(!canalDeVoz){
-         return message.channel.send('<:not:786381128260911155> | Debes unirte a un canal de voz para ajustar el volumen de la musica');
+            bot.mensajeAdvertencia.setDescription('<:not:786381128260911155> • Debes unirte a un canal de voz para ajustar el volumen de la musica');
+         return message.channel.send(bot.mensajeAdvertencia)
         }
         if(canalDeVoz.id !== message.guild.me.voice.channel.id){
-            return message.channel.send('<:not:786381128260911155> | No estas en el mismo canal de voz');
+            bot.mensajeAdvertencia.setDescription('<:not:786381128260911155> • No estas en el mismo canal de voz');
+           return message.channel.send(bot.mensajeAdvertencia)
         }
 
         if(bot.cola){
