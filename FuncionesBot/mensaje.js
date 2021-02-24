@@ -143,6 +143,18 @@ bot.mensajeExito = new bot.discord.MessageEmbed().setColor(objecto.color).setTim
          return message.channel.send(embedNoPermisos)
         }
         }
+  if(cmd.permissionsBot){
+let botPerms = message.channel.permissionsFor(bot.user);
+   if (!botPerms || !botPerms.has(cmd.permissionsBot)) {
+    let embedNoPermisosBot = new bot.discord.MessageEmbed()
+.setDescription(`<:not:786381128260911155> • No tengo los suficientes.\n__Permiso requerido:__ \`${cmd.permissionsBot}\``)
+.setTimestamp()
+.setFooter(message.author.tag, message.author.displayAvatarURL({dynamic: true}))
+.setColor('RANDOM')
+return message.channel.send(embedNoPermisosBot)
+}
+  }
+
     cmd.run(bot, message, args)
     }
 

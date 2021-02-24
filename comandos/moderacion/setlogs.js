@@ -4,7 +4,7 @@ module.exports = {
     cooldown: 4,
     usage: '<canal>',
     permissions: 'MANAGE_GUILD',
-    permissionsBot: '',
+    permissionsBot: 'SEND_MESSAGES',
     description: 'Establecer un canal de logs en su servidor.',
     async run (bot, message, args) {
       const dbLogs = require('../../database/models/logs.js')

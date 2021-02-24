@@ -11,9 +11,9 @@ bot.db = require('./database/models/afk.js');
 bot.discord = Discord;
 
 ///////////////////funciones /////////////////////////
-    var Ready = require('./eventosFuncionesBot/ready.js')
+    var Ready = require('./FuncionesBot/ready.js')
     var comandos = require('./comandos.js')
-    var mensaje = require('./eventosFuncionesBot/mensaje.js')
+    var mensaje = require('./FuncionesBot/mensaje.js')
     var demasEventos = require('./events.js')  
 /////////////////////////////////////
 
@@ -21,6 +21,7 @@ bot.mapcola = new Map()
 bot.comandos = new Discord.Collection();
 
 const { GiveawaysManager } = require('discord-giveaways');
+const { rejects } = require('assert')
 bot.giveawaysManager = new GiveawaysManager(bot, {
     storage: "./giveaways.json",
     updateCountdownEvery: 50000,

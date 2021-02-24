@@ -5,7 +5,7 @@ module.exports = {
     usage: '',
     description: 'Ver el avatar de un usuario',
     async run(bot, message, args) {
-        let busqueda = message.mentions.users.first() || bot.users.cache.get(args[0]) || await bot.users.fetch(args[0]).catch((error) =>   { console.log(error) }) || message.author
+        let busqueda = message.mentions.users.first() || await bot.users.fetch(args[0]).catch((error) =>   { console.log(error) }) || message.author
         let usuario = args[0] ? busqueda : message.mentions.users.first() || message.author;
         
         let png = await usuario.displayAvatarURL({dynamic: true, size: 4096, format: 'png'})
